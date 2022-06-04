@@ -32,7 +32,7 @@ jobs:
           
       - run: npm ci
       - run: npm install
-      - run: npm serve
+      - run: ng serve
 
   publish-npm:
     needs: build
