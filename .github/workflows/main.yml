@@ -31,7 +31,6 @@ jobs:
           node-version: 16
           
       - run: npm ci
-      - run: npm test
       - run: npm install
       - run: npm serve
 
