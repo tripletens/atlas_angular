@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod && mv dist/atlas_angular _static",
+    "build": "ng build --prod && mv dist/my-app _static",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
