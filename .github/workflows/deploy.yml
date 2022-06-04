@@ -26,6 +26,6 @@ jobs:
             git clone git@github.com:tripletens/atlas_angular.git
             cd atlas_angular
             ng build
-            echo 'Deployment successful to digital ocean'
+            echo 'Deployment successful to digital ocean.'
             
 
