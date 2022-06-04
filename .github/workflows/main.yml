@@ -4,35 +4,21 @@
 name: Angular Js / Node.js Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [main]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Deploy Angular App
+        uses: appleboy/ssh-action@0.1.2
         with:
-          node-version: 16
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.ATLAS_ANGULAR_SSH_PRIVATE}}
-          username: ${{secrets.SSH_USERNAME}}
-      - run: npm ci
-      - run: npm test
-      - run: npm install
-      - run: npm serve
-
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env:
-          ATLAS_ANGULAR_SSH: ${{secrets.ATLAS_ANGULAR_SSH}}
+          host: ${{secrets.SSH_HOST}} # ip address of the server you wish to ssh into
+          key: ${{secrets.ATLAS_ANGULAR_SSH_PRIVATE}} # public or private key of the server 
+          username: ${{secrets.SSH_USERNAME}} # user of the server 
+          scripts: | 
+            mkdir test
+            cd test
+            git clone git@github.com:/tripletens/atlas_angular.git
+            echo 'Deployment successful to digital ocean'
