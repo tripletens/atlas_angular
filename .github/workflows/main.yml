@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy Angular App
-        uses: actions/setup-node@v3
+        uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SSH_HOST}} # ip address of the server you wish to ssh into
           key: ${{secrets.ATLAS_ANGULAR_SSH}} # public or private key of the server 
@@ -33,7 +33,7 @@ jobs:
       - run: npm ci
       - run: npm install
       - run: npm install -g @angular/cli
-      - run: ng serve
+      - run: ng build
 
   publish-npm:
     needs: build
