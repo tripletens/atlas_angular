@@ -20,7 +20,11 @@ jobs:
           script: | 
             mkdir test
             cd test
+            npm install
+            npm install -g @angular/cli
             git clone git@github.com:tripletens/atlas_angular.git
+            cd atlas_angular
+            ng build
             echo 'Deployment successful to digital ocean'
             
 
