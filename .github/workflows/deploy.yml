@@ -15,9 +15,9 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SSH_HOST}} # ip address of the server you wish to ssh into
-          key: ${{secrets.ATLAS_ANGULAR_SSH_PRIVATE}} # public or private key of the server 
+#           key: ${{secrets.ATLAS_ANGULAR_SSH_PRIVATE}} # public or private key of the server 
           username: ${{secrets.SSH_USERNAME}} # user of the server 
-#           password: ${{secrets.SSH_PASSWORD}} # password of the server 
+          password: ${{secrets.SSH_PASSWORD}} # password of the server 
           script: | 
             mkdir test
             cd test
@@ -27,5 +27,5 @@ jobs:
             cd atlas_angular
             ng build
             echo 'Deployment successful to digital ocean.'
-          passphrase: ${{secrets.SSH_PASSWORD}}
+#           passphrase: ${{secrets.SSH_PASSWORD}}
 
